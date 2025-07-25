@@ -1,7 +1,7 @@
 return
 {
     'nvim-lualine/lualine.nvim',
-    lazy=false,
+        event="UIEnter",
     config=function()
       require('lualine').setup({
                 options={
