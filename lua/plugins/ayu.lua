@@ -1,4 +1,4 @@
-return {"Shatur/neovim-ayu",name="ayu",lazy=false,enabled=true,priority=1000,
+return {"Shatur/neovim-ayu",name="ayu",enabled=true,
 config=function ()
   require('ayu').setup({
       mirage = false, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.

@@ -1,1 +1,1 @@
-return { "arturgoms/moonbow.nvim" ,lazy=false,priority=1000}
+return { "arturgoms/moonbow.nvim" ,enabled=true}
