@@ -4,14 +4,18 @@ config=function()
         bufferline.setup{
             options={
                 mode="buffers",
-                style_preset=bufferline.style_preset.default,
-                numbers="none",
+                style_preset={bufferline.style_preset.minimal,bufferline.style_preset.no_italic},
+                 numbers = function(opts)
+                    return string.format('%s',opts.raise(opts.ordinal))
+                  end,
                 show_close_icon=false,
                 show_buffer_close_icons=false,
                 show_tab_indicators=false,
-                separator_style="none",
+                modified_icon="*",
+                separator_style="slant",
+                tab_size=12,
                 indicator={
-                    style="none"
+                    style="underline",
                 },
                 always_show_bufferline=false,
                 offsets={
