@@ -17,6 +17,15 @@ end, { desc = "Toggle number" })
 
 map('n','gll',vim.diagnostic.open_float)
 
+
+--bufferline
+map('n', '<Tab>', '<Cmd>BufferLineCycleNext<CR>', { desc = 'Next buffer' })
+map('n', '<S-Tab>', '<Cmd>BufferLineCyclePrev<CR>', { desc = 'Previous buffer' })
+for i = 1, 9 do
+  map('n', '<leader>'..i, '<cmd>BufferLineGoToBuffer '..i..'<cr>')
+end
+map('n', '<leader>0', '<cmd>BufferLineGoToBuffer 10<cr>')
+
 --oil
 map('n','\\',"<CMD>Oil --float<CR>",{})
 map('n','<leader>o',"<CMD>Oil --float<CR>",{})
