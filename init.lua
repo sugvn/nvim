@@ -1,6 +1,6 @@
 
 vim.g.mapleader = " "
-vim.o.winborder = 'rounded'
+-- vim.o.winborder = 'rounded'
 
 -- bootstrap lazy and all plugins
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
