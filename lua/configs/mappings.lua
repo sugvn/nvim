@@ -17,6 +17,11 @@ end, { desc = "Toggle number" })
 
 map('n','gll',vim.diagnostic.open_float)
 
+--formatting----
+vim.keymap.set("n", "<leader>fm", function()
+  vim.lsp.buf.format()
+end, { desc = "Format with LSP" })
+
 
 --bufferline
 map('n', '<Tab>', '<Cmd>BufferLineCycleNext<CR>', { desc = 'Next buffer' })
