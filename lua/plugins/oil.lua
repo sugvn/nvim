@@ -6,7 +6,7 @@ return
     opts = {},
     config = function()
       require("oil").setup({
-                columns={"icons",},
+                columns={"icons"},
                 win_options={
                     wrap=true,
                     signcolumn="yes",

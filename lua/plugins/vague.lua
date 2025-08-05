@@ -4,12 +4,40 @@ return {
     -- lazy = false,
     -- priority = 1000,
     -- config = function()
+    --     require("vague").setup({
+    --         bold = false,
+    --         italic = false,
+    --         colors = {
+    --             bg = "#020202",
+    --             fg = "#cdcdcd",
+    --             floatBorder = "#878787",
+    --             line = "#252530",
+    --             comment = "#606079",
+    --             builtin = "#b4d4cf",
+    --             func = "#c48282",
+    --             string = "#c99a69",
+    --             number = "#7fa563",
+    --             property = "#c3c3d5",
+    --             constant = "#aeaed1",
+    --             parameter = "#bb9dbd",
+    --             visual = "#333738",
+    --             error = "#d8647e",
+    --             warning = "#f3be7c",
+    --             hint = "#7e98e8",
+    --             operator = "#90a0b5",
+    --             keyword = "#6e94b2",
+    --             type = "#9bb4bc",
+    --             search = "#405065",
+    --             plus = "#7fa563",
+    --             delta = "#c99a69",
+    --         }
+    --     })
     --     vim.cmd [[colorscheme vague]]
-    --     vim.api.nvim_set_hl(0, "Normal", { bg = "#000000" })
-    --     vim.api.nvim_set_hl(0, "NormalNC", { bg = "#000000" })
-    --     vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#000000" })
-    --     vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#000000" })
-    --     vim.api.nvim_set_hl(0, "SignColumn", { bg = "#000000" })
-    --     vim.api.nvim_set_hl(0, "VertSplit", { bg = "#000000" })
+    --     -- vim.api.nvim_set_hl(0, "Normal",      { bg = "#020202" })
+    --     -- vim.api.nvim_set_hl(0, "NormalNC",    { bg = "#020202" })
+    --     -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#020202" })
+    --     -- vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#020202" })
+    --     -- vim.api.nvim_set_hl(0, "SignColumn",  { bg = "#020202" })
+    --     -- vim.api.nvim_set_hl(0, "VertSplit",   { bg = "#020202" })
     -- end
 }
