@@ -31,14 +31,18 @@ return
       vim.api.nvim_create_autocmd("FileType", {
         pattern = "oil",
         callback = function()
+
           vim.keymap.set("n", "q", ":bd<CR>", { buffer = true, silent = true })
           vim.keymap.set("n", "Q", ":bd<CR>", { buffer = true, silent = true })
+
           local opts = { buffer = true, noremap = true }
           vim.keymap.set("n", "J", "<Nop>", opts)
           vim.keymap.set("n", "K", "<Nop>", opts)
+
           -- Remap for navigation
           vim.keymap.set("n", "J", "j", opts)
           vim.keymap.set("n", "K", "k", opts)
+
         end,
       })
     end,

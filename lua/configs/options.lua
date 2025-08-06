@@ -1,6 +1,4 @@
 
--- vim.g.snacks_animate = true
-
 --indent--
 vim.opt.expandtab=true
 vim.o.winborder="none"
@@ -16,15 +14,12 @@ vim.opt.termguicolors=true
 --file--
 vim.opt.undofile=true
 
-
 --buffer--
 vim.opt.splitright=true
 vim.opt.splitbelow=true
 
-
 ---clipboard--
 vim.opt.clipboard = "unnamedplus"
-
 
 --line number--
 vim.opt.relativenumber= true

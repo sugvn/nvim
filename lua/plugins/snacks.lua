@@ -7,7 +7,7 @@ return {
         --dashboard = { enabled = true },
         --explorer = { enabled = true },
         --indent = { enabled = true },
-        lazygit = { enabled = true },
+        -- lazygit = { enabled = true },
         --    input = { enabled = true },
         --notifier = {
         --  enabled = true,
@@ -28,10 +28,8 @@ return {
     keys = {
         -- Top Pickers & Explorer
         { "<leader>y",  function() Snacks.picker.zoxide({ cwd = "~/" }) end,                    desc = "zoxide search" },
-        -- { "<A-p>", function() Snacks.picker.smart({cwd="~/"}) end, desc = "Smart Find Files" },
         { "<A-p>",      function() Snacks.picker.smart() end,                                   desc = "Find Config File" },
         { "<leader>,",  function() Snacks.picker.buffers() end,                                 desc = "Buffers" },
-        { "<leader>/",  function() Snacks.picker.grep() end,                                    desc = "Grep" },
         { "<leader>:",  function() Snacks.picker.command_history() end,                         desc = "Command History" },
         { "<leader>n",  function() Snacks.picker.notifications() end,                           desc = "Notification History" },
         { "<leader>e",  function() Snacks.explorer() end,                                       desc = "File Explorer" },

@@ -35,13 +35,12 @@ return {
                 appearance = {
                         -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
                         -- Adjusts spacing to ensure icons are aligned
-                        nerd_font_variant = 'mono'
+                        nerd_font_variant = 'normal'
                 },
 
-                cmdline = { enabled = false },
+                cmdline = { enabled = true },
                 -- (Default) Only show the documentation popup when manually triggered
                 completion = {
-                        -- documentation = { auto_show = false },
                         documentation = { auto_show = true, auto_show_delay_ms = 1000 },
                         keyword = { range = 'full' },
                         list = { selection = { auto_insert = false } },
@@ -61,7 +60,7 @@ return {
                 -- Default list of enabled providers defined so that you can extend it
                 -- elsewhere in your config, without redefining it, due to `opts_extend`
                 sources = {
-                        default = { 'lsp', 'snippets', 'path', 'buffer' }, --removed snippets
+                        default = { 'lsp', 'snippets', 'path', 'buffer' },
                         providers = {
                                 snippets = {
                                         -- min_keyword_length = 2,
