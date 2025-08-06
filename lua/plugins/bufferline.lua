@@ -16,10 +16,10 @@ return {
                                 show_buffer_close_icons = false,
                                 show_tab_indicators = false,
                                 modified_icon = "*",
-                                separator_style = "slant",
+                                separator_style = "none",
                                 tab_size = 12,
                                 indicator = {
-                                        style = "underline",
+                                        style = "none",
                                 },
                                 always_show_bufferline = false,
                                 offsets = {
