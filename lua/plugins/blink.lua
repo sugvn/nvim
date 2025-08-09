@@ -60,12 +60,12 @@ return {
                 -- Default list of enabled providers defined so that you can extend it
                 -- elsewhere in your config, without redefining it, due to `opts_extend`
                 sources = {
-                        default = { 'lsp', 'snippets', 'path', 'buffer' },
+                        default = { 'lsp','path', 'buffer' },--removed snippets from sources
                         providers = {
-                                snippets = {
-                                        -- min_keyword_length = 2,
-                                        score_offset = 6,
-                                },
+                                -- snippets = {
+                                --         -- min_keyword_length = 2,
+                                --         score_offset = 6,
+                                -- },
                                 lsp = {
                                         -- min_keyword_length = 0,
                                         score_offset = 10,
