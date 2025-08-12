@@ -8,7 +8,7 @@ return {
       configs.setup({
           ensure_installed = { "c","cpp","lua","css","javascript", "html","go"},
           sync_install = false,
-          highlight = { enable = true,use_languagetree=true},
+          highlight = { enable = true,use_languagetree=false},
           indent = { enable = true },
         })
     end

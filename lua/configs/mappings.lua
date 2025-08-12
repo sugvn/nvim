@@ -25,8 +25,8 @@ end, { desc = "Format with LSP" })
 
 
 --bufferline
-map('n', '<Tab>', '<Cmd>BufferLineCycleNext<CR>', { desc = 'Next buffer' })
-map('n', '<S-Tab>', '<Cmd>BufferLineCyclePrev<CR>', { desc = 'Previous buffer' })
+map('n', '<Tab>', '<Cmd>bnext<CR>', { desc = 'Next buffer' })
+map('n', '<S-Tab>', '<Cmd>bprevious<CR>', { desc = 'Previous buffer' })
 for i = 1, 9 do
   map('n', '<leader>'..i, '<cmd>BufferLineGoToBuffer '..i..'<cr>')
 end

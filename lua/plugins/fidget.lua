@@ -1,7 +1,7 @@
 return
 {
         "j-hui/fidget.nvim",
-        event = "User FilePost",
+        event = "BufReadPost",
         config = function()
                 require("fidget").setup({})
         end

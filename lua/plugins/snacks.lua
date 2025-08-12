@@ -1,6 +1,6 @@
 return {
     "folke/snacks.nvim",
-    event = "User FilePost",
+    -- event = "User FilePost",
     ---@type snacks.Config
     opts = {
         --bigfile = { enabled = true },
