@@ -26,7 +26,7 @@ vim.opt.relativenumber= true
 vim.opt.number = true
 vim.opt.cursorline=false
 vim.opt.numberwidth=4
-vim.opt.signcolumn="no"
+vim.opt.signcolumn="yes"
 
 --cmd line--
 vim.opt.cmdheight = 1

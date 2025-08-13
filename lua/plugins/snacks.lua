@@ -28,7 +28,7 @@ return {
     keys = {
         -- Top Pickers & Explorer
         { "<leader>y",  function() Snacks.picker.zoxide({ cwd = "~/" }) end,                    desc = "zoxide search" },
-        { "<A-p>",      function() Snacks.picker.smart() end,                                   desc = "Find Config File" },
+        { "<A-p>",      function() Snacks.picker.files() end,                                   desc = "Find Config File" },
         { "<leader>,",  function() Snacks.picker.buffers() end,                                 desc = "Buffers" },
         { "<leader>:",  function() Snacks.picker.command_history() end,                         desc = "Command History" },
         { "<leader>n",  function() Snacks.picker.notifications() end,                           desc = "Notification History" },
@@ -36,7 +36,7 @@ return {
         -- find
         { "<leader>fb", function() Snacks.picker.buffers() end,                                 desc = "Buffers" },
         { "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
-        { "<A-P>",      function() Snacks.picker.files() end,                                   desc = "Find Files" },
+        { "<leader>ff", function() Snacks.picker.smart({cwd="~/"}) end,                                   desc = "Find Files" },
         { "<leader>fg", function() Snacks.picker.git_files() end,                               desc = "Find Git Files" },
         { "<leader>fp", function() Snacks.picker.projects() end,                                desc = "Projects" },
         { "<leader>fr", function() Snacks.picker.recent() end,                                  desc = "Recent" },

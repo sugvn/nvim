@@ -1,5 +1,6 @@
 return {
         "lewis6991/gitsigns.nvim",
+        enabled=false,
         event = "User FilePost",
         config = function()
                 require('gitsigns').setup {
