@@ -3,7 +3,7 @@ local map = vim.keymap.set
 
 --general--
 map('n',';',':')
-map("n", "vv", "V", { noremap = true, silent = true })
+map({"v","n"}, "vv", "V", { noremap = true, silent = true })
 vim.api.nvim_create_user_command('Q', 'q!', {})
 
 map("n", "<leader>rn", function()
