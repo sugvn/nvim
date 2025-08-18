@@ -1,5 +1,14 @@
 
 vim.g.mapleader = " "
+require("colors.ex-vague")
+require "configs.options"
+require "configs.autocmds"
+
+--load config files
+vim.schedule(function()
+  require "configs.mappings"
+  require "configs.lsp"
+end)
 
 -- bootstrap lazy and all plugins
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
@@ -15,10 +24,3 @@ require("lazy").setup({
   { import = "plugins" },
 }, lazy_config)
 
---load config files
-require "configs.options"
-require "configs.autocmds"
-vim.schedule(function()
-  require "configs.mappings"
-  require "configs.lsp"
-end)
