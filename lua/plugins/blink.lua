@@ -2,7 +2,7 @@ return {
         'saghen/blink.cmp',
         event = "InsertEnter",
         -- optional: provides snippets for the snippet source
-        dependencies = { 'rafamadriz/friendly-snippets' },
+        -- dependencies = { 'rafamadriz/friendly-snippets' },
 
         -- use a release tag to download pre-built binaries
         version = '1.*',
@@ -38,7 +38,7 @@ return {
                         nerd_font_variant = 'normal'
                 },
 
-                cmdline = { enabled = true },
+                cmdline = { enabled = false },
                 -- (Default) Only show the documentation popup when manually triggered
                 completion = {
                         documentation = { auto_show = true, auto_show_delay_ms = 1000 },
@@ -48,8 +48,8 @@ return {
                                 --        border="rounded",
                                 draw = {
                                         columns = {
-                                                { "kind_icon" },
                                                 { "label",    gap = 1 },
+                                                { "kind_icon" },
                                                 { "kind" }
                                         },
                                 }
