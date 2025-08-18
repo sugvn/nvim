@@ -1,6 +1,6 @@
 return {
         "leath-dub/snipe.nvim",
-        lazy=false,
+        event="UIEnter",
         config = function()
                 local snipe=require("snipe")
                 snipe.setup({
