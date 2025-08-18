@@ -1,7 +1,7 @@
 return
   {
     'stevearc/oil.nvim',
-    event="BufReadPost",
+    -- event="BufReadPost",
     cmd="Oil",
     opts = {},
     config = function()
