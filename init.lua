@@ -3,6 +3,7 @@
 vim.g.mapleader = " "
 -- require("colors.ex-vague")
 require "configs.options"
+vim.opt.syntax = "on"
 -- require "configs.autocmds"
 
 --load config files

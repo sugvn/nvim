@@ -55,6 +55,7 @@ return {
                 ["@function.method"]                = { fg = "iris" },
                 ["@function.method.call"]           = { fg = "iris" },
                 ["@keyword"]                        = { fg = "gold" },
+                ["@keyword.import"]                 = { fg = "iris" },
                 ["@keyword.conditional"]            = { fg = "gold" },
                 ["@keyword.conditional.ternary"]    = { fg = "gold" },
                 ["@keyword.directive"]              = { fg = "rose" },
@@ -88,6 +89,11 @@ return {
                 ["@variable.builtin"]               = { fg = "gold" },
                 ["@variable.member"]                = { fg = "love" },
                 ["@variable.parameter"]             = { fg = "love" },
+                ["@type"]               = { fg = "rose" },   -- Animal, custom types → copper
+                -- ["@type.builtin"]       = { fg = "rose" },   -- string, int → copper (already set but check it's loading)
+                ["@keyword.modifier"]   = { fg = "gold" },   -- virtual, private, public, static → yellow
+                ["@keyword.type"]       = { fg = "gold" },   -- class, struct, enum → yellow
+                ["@namespace"]          = { fg = "love" },   -- std → red (maps to @module in newer TS)
         
                 -- LEGACY SYNTAX GROUPS
                 Boolean         = { fg = "gold" },
@@ -122,6 +128,15 @@ return {
                 -- DiagnosticInfo uses nvchad green (#abe9b3) which is outside rosepine palette
                 -- override with hex directly:
                 DiagnosticInfo  = { fg = "#abe9b3" },
+                Define       = { fg = "gold" },
+                Delimiter    = { fg = "subtle" },
+                Float        = { fg = "gold" },
+                Variable     = { fg = "text" },
+                PreProc      = { fg = "rose" },
+                Repeat       = { fg = "rose" },
+                SpecialChar  = { fg = "subtle" },
+                Structure    = { fg = "gold" },
+                Todo         = { fg = "rose", bg = "surface" },
             },
         })
 		vim.cmd("colorscheme rose-pine")
