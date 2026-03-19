@@ -6,6 +6,8 @@ return {
 	config = function()
         require("rose-pine").setup({
                 styles={
+                        bold=false,
+                        italic=false,
                         transparency=true
                 },
                 groups = {
