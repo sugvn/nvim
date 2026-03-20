@@ -1,7 +1,7 @@
 
 
 vim.g.mapleader = " "
--- require("colors.ex-vague")
+vim.cmd("colorscheme  rose-pine")
 require "configs.options"
 vim.opt.syntax = "on"
 -- require "configs.autocmds"
