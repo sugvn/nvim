@@ -1,38 +1,7 @@
-local disabled_builtins = {
-    "2html_plugin",
-    "tohtml",
-    "getscript",
-    "getscriptPlugin",
-    "gzip",
-    "logipat",
-    "netrw",
-    "netrwPlugin",
-    "netrwSettings",
-    "netrwFileHandlers",
-    "matchit",
-    "tar",
-    "tarPlugin",
-    "rrhelper",
-    "spellfile_plugin",
-    "vimball",
-    "vimballPlugin",
-    "zip",
-    "zipPlugin",
-    "tutor",
-    "rplugin",
-    "syntax",
-    "synmenu",
-    "optwin",
-    "compiler",
-    "bugreport",
-    "ftplugin",
-}
-for _, plugin in ipairs(disabled_builtins) do
-    vim.g["loaded_" .. plugin] = 1
-end
-
+vim.loader.enable(true)
 vim.cmd("colorscheme  rose-pine")
 vim.g.mapleader = " "
+vim.opt.clipboard = "unnamedplus"
 
 --indent--
 vim.opt.expandtab = true
@@ -54,7 +23,6 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 
 ---clipboard--
-vim.opt.clipboard = "unnamedplus"
 
 --line number--
 vim.opt.relativenumber = true
@@ -68,42 +36,33 @@ vim.opt.cmdheight = 1
 vim.opt.smartcase = true
 vim.opt.ignorecase = true
 
-local function mapping()
-	local map = vim.keymap.set
-	vim.api.nvim_create_user_command("Q", "q!", {})
+vim.api.nvim_create_user_command("Q", "q!", {})
+local map = vim.keymap.set
+map("n", ";", ":")
+map({ "v", "n" }, "vv", "V", { noremap = true, silent = true })
+map("n", "<leader>rn", "<CMD>se rnu!<CR>")
+map("n", "<leader>n","<CMD>se nu!<CR>")
+map("n", "gll", vim.diagnostic.open_float)
+map("n", "<leader>fm",vim.lsp.buf.format )
+map("n", "<C-h>", "<C-w>h")
+map("n", "<C-j>", "<C-w>j")
+map("n", "<C-k>", "<C-w>k")
+map("n", "<C-l>", "<C-w>l")
+map("n", "<leader>i", "<CMD>Inspect<CR>")
+map("n", "<A-v>", ":split<CR>", { noremap = true, silent = true })
+map("n", "<A-b>", ":vsplit<CR>", { noremap = true, silent = true })
 
-	--general--
-	map("n", ";", ":")
-	map({ "v", "n" }, "vv", "V", { noremap = true, silent = true })
 
-	map("n", "<leader>rn", function()
-		vim.opt.relativenumber = not vim.opt.relativenumber:get()
-		vim.opt.number = vim.opt.relativenumber:get()
-	end, { desc = "Toggle relative number" })
-
-	map("n", "<leader>n", function()
-		vim.opt.relativenumber = false
-		vim.opt.number = not vim.opt.number:get()
-	end, { desc = "Toggle number" })
-
-	map("n", "gll", vim.diagnostic.open_float)
-
-	--formatting--
-	map("n", "<leader>fm", function()
-		vim.lsp.buf.format()
-	end, { desc = "Format with LSP" })
-
-	map("n", "<C-h>", "<C-w>h")
-	map("n", "<C-j>", "<C-w>j")
-	map("n", "<C-k>", "<C-w>k")
-	map("n", "<C-l>", "<C-w>l")
-
-	map("n", "<leader>i", "<CMD>Inspect<CR>")
-
-	map("n", "<A-v>", ":split<CR>", { noremap = true, silent = true })
-	map("n", "<A-b>", ":vsplit<CR>", { noremap = true, silent = true })
-end
+vim.pack.add({
+        "https://github.com/ibhagwan/fzf-lua",
+        "https://github.com/windwp/nvim-autopairs",
+        "https://github.com/j-hui/fidget.nvim"
+        
+})
 
 vim.schedule(function()
-  mapping()
-end)
+require("nvim-autopairs").setup()
+end
+)
+
+map("n","<leader><leader>","<CMD>FzfLua files<CR>")
