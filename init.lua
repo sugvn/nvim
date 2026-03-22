@@ -41,9 +41,9 @@ local map = vim.keymap.set
 map("n", ";", ":")
 map({ "v", "n" }, "vv", "V", { noremap = true, silent = true })
 map("n", "<leader>rn", "<CMD>se rnu!<CR>")
-map("n", "<leader>n","<CMD>se nu!<CR>")
+map("n", "<leader>n", "<CMD>se nu!<CR>")
 map("n", "gll", vim.diagnostic.open_float)
-map("n", "<leader>fm",vim.lsp.buf.format )
+map("n", "<leader>fm", vim.lsp.buf.format)
 map("n", "<C-h>", "<C-w>h")
 map("n", "<C-j>", "<C-w>j")
 map("n", "<C-k>", "<C-w>k")
@@ -51,18 +51,32 @@ map("n", "<C-l>", "<C-w>l")
 map("n", "<leader>i", "<CMD>Inspect<CR>")
 map("n", "<A-v>", ":split<CR>", { noremap = true, silent = true })
 map("n", "<A-b>", ":vsplit<CR>", { noremap = true, silent = true })
+map("n", "<leader><leader>", "<CMD>FzfLua files<CR>")
 
+local servers = { "clangd", "lua_ls" }
+vim.lsp.config("lua_ls", {
+        settings = {
+                Lua = {
+                        diagnostics = { globals = { 'vim', 'require' } },
+                        workspace = { library = vim.api.nvim_get_runtime_file("", true) }
+                }
+        }
+})
 
 vim.pack.add({
         "https://github.com/ibhagwan/fzf-lua",
         "https://github.com/windwp/nvim-autopairs",
-        "https://github.com/j-hui/fidget.nvim"
-        
+        "https://github.com/j-hui/fidget.nvim",
+        "https://github.com/kawre/neotab.nvim",
+        "https://github.com/neovim/nvim-lspconfig"
 })
 
 vim.schedule(function()
-require("nvim-autopairs").setup()
+        require("nvim-autopairs").setup()
+        require("neotab").setup()
+        for _, server in ipairs(servers) do
+                vim.lsp.enable(server)
+        end
 end
 )
 
-map("n","<leader><leader>","<CMD>FzfLua files<CR>")
