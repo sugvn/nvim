@@ -5,7 +5,7 @@ vim.opt.clipboard = "unnamedplus"
 
 --indent--
 vim.opt.expandtab = true
-vim.o.winborder = "none"
+vim.o.winborder = "single"
 vim.o.wrap = true
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 8
@@ -74,6 +74,7 @@ vim.pack.add({
 vim.schedule(function()
         require("nvim-autopairs").setup()
         require("neotab").setup()
+        require("fidget").setup()
         for _, server in ipairs(servers) do
                 vim.lsp.enable(server)
         end
