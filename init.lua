@@ -68,13 +68,15 @@ vim.pack.add({
         "https://github.com/windwp/nvim-autopairs",
         "https://github.com/j-hui/fidget.nvim",
         "https://github.com/kawre/neotab.nvim",
-        "https://github.com/neovim/nvim-lspconfig"
+        "https://github.com/neovim/nvim-lspconfig",
+        {src="https://github.com/saghen/blink.cmp",version=vim.version.range('*')}
 })
 
 vim.schedule(function()
         require("nvim-autopairs").setup()
         require("neotab").setup()
         require("fidget").setup()
+        require("blink.cmp").setup({completion = {menu={auto_show=false},ghost_text={enabled=true}}})
         for _, server in ipairs(servers) do
                 vim.lsp.enable(server)
         end
