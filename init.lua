@@ -22,7 +22,7 @@ vim.opt.undofile = true
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
----clipboard--
+--clipboard--
 
 --line number--
 vim.opt.relativenumber = true
@@ -51,7 +51,7 @@ map("n", "<C-l>", "<C-w>l")
 map("n", "<leader>i", "<CMD>Inspect<CR>")
 map("n", "<A-v>", ":split<CR>", { noremap = true, silent = true })
 map("n", "<A-b>", ":vsplit<CR>", { noremap = true, silent = true })
-map("n", "<leader><leader>", "<CMD>FzfLua files<CR>")
+map("n", "<leader><space>",":FzfLua files<CR>")
 
 local servers = { "clangd", "lua_ls" }
 vim.lsp.config("lua_ls", {
@@ -69,17 +69,16 @@ vim.pack.add({
         "https://github.com/j-hui/fidget.nvim",
         "https://github.com/kawre/neotab.nvim",
         "https://github.com/neovim/nvim-lspconfig",
-        {src="https://github.com/saghen/blink.cmp",version=vim.version.range('*')}
+        { src = "https://github.com/saghen/blink.cmp", version = vim.version.range('*') }
 })
 
 vim.schedule(function()
         require("nvim-autopairs").setup()
         require("neotab").setup()
         require("fidget").setup()
-        require("blink.cmp").setup({completion = {menu={auto_show=false},ghost_text={enabled=true}}})
+        require("blink.cmp").setup({ completion = { menu = { auto_show = true }, ghost_text = { enabled = false } } })
         for _, server in ipairs(servers) do
                 vim.lsp.enable(server)
         end
 end
 )
-
