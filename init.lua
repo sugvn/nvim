@@ -51,8 +51,10 @@ map("n", "<C-l>", "<C-w>l")
 map("n", "<leader>i", "<CMD>Inspect<CR>")
 map("n", "<A-v>", ":split<CR>", { noremap = true, silent = true })
 map("n", "<A-b>", ":vsplit<CR>", { noremap = true, silent = true })
-map("n", "<leader><space>",":FzfLua files<CR>")
-
+map("n", "<leader>ff",":FzfLua files<CR>")
+map("n", "<leader><space>",":FzfLua files cwd=~/<CR>")
+map("n", "<leader>gp",":FzfLua live_grep_native<CR>")
+map("n","gd",":FzfLua diagnostics_document<CR>")
 local servers = { "clangd", "lua_ls" }
 vim.lsp.config("lua_ls", {
         settings = {
