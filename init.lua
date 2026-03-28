@@ -2,6 +2,8 @@ vim.loader.enable(true)
 vim.cmd("colorscheme  rose-pine")
 vim.g.mapleader = " "
 vim.opt.clipboard = "unnamedplus"
+vim.o.syntax = "off"
+vim.g.loaded_netrwPlugin = 1
 
 --indent--
 vim.opt.expandtab = true
@@ -21,8 +23,6 @@ vim.opt.undofile = true
 --buffer--
 vim.opt.splitright = true
 vim.opt.splitbelow = true
-
---clipboard--
 
 --line number--
 vim.opt.relativenumber = true
@@ -51,10 +51,14 @@ map("n", "<C-l>", "<C-w>l")
 map("n", "<leader>i", "<CMD>Inspect<CR>")
 map("n", "<A-v>", ":split<CR>", { noremap = true, silent = true })
 map("n", "<A-b>", ":vsplit<CR>", { noremap = true, silent = true })
+map("n","<Tab>",":bnext<CR>",{silent = true})
 map("n", "<leader>ff",":FzfLua files<CR>")
 map("n", "<leader><space>",":FzfLua files cwd=~/<CR>")
 map("n", "<leader>gp",":FzfLua live_grep_native<CR>")
 map("n","gd",":FzfLua diagnostics_document<CR>")
+map("n","<leader>gd",":FzfLua git_diff<CR>")
+map("n","<leader>o",":Oil --float<CR>")
+
 local servers = { "clangd", "lua_ls" }
 vim.lsp.config("lua_ls", {
         settings = {
@@ -65,7 +69,15 @@ vim.lsp.config("lua_ls", {
         }
 })
 
+local treesitters = {'cpp', 'lua'}
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = treesitters,
+  callback = function() vim.treesitter.start() end,
+})
+
 vim.pack.add({
+        "https://github.com/nvim-treesitter/nvim-treesitter",
+        "https://github.com/stevearc/oil.nvim",
         "https://github.com/ibhagwan/fzf-lua",
         "https://github.com/windwp/nvim-autopairs",
         "https://github.com/j-hui/fidget.nvim",
@@ -75,12 +87,14 @@ vim.pack.add({
 })
 
 vim.schedule(function()
-        require("nvim-autopairs").setup()
-        require("neotab").setup()
-        require("fidget").setup()
-        require("blink.cmp").setup({ completion = { menu = { auto_show = true }, ghost_text = { enabled = false } } })
         for _, server in ipairs(servers) do
                 vim.lsp.enable(server)
         end
+        require("oil").setup()
+        require("nvim-autopairs").setup()
+        require("neotab").setup({})
+        require("fidget").setup({})
+        require("blink.cmp").setup({ completion = { menu = { auto_show = true }, ghost_text = { enabled = false } } })
+        require("nvim-treesitter").install(treesitters)
 end
 )
