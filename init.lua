@@ -1,3 +1,4 @@
+
 vim.loader.enable(true)
 vim.cmd("colorscheme  rose-pine")
 vim.g.mapleader = " "
@@ -36,6 +37,7 @@ vim.opt.cmdheight = 1
 vim.opt.smartcase = true
 vim.opt.ignorecase = true
 
+-- keymaps
 vim.api.nvim_create_user_command("Q", "q!", {})
 local map = vim.keymap.set
 map("n", ";", ":")
@@ -48,17 +50,24 @@ map("n", "<C-h>", "<C-w>h")
 map("n", "<C-j>", "<C-w>j")
 map("n", "<C-k>", "<C-w>k")
 map("n", "<C-l>", "<C-w>l")
+-- map("t", "<C-h>", "<cmd>wincmd h<CR>")
+-- map("t", "<C-j>", "<cmd>wincmd j<CR>")
+-- map("t", "<C-k>", "<cmd>wincmd k<CR>")
+-- map("t", "<C-l>", "<cmd>wincmd l<CR>")
 map("n", "<leader>i", "<CMD>Inspect<CR>")
 map("n", "<A-v>", ":split<CR>", { noremap = true, silent = true })
 map("n", "<A-b>", ":vsplit<CR>", { noremap = true, silent = true })
-map("n","<Tab>",":bnext<CR>",{silent = true})
-map("n", "<leader>ff",":FzfLua files<CR>")
-map("n", "<leader><space>",":FzfLua files cwd=~/<CR>")
-map("n", "<leader>gp",":FzfLua live_grep_native<CR>")
-map("n","gd",":FzfLua diagnostics_document<CR>")
-map("n","<leader>gd",":FzfLua git_diff<CR>")
-map("n","<leader>o",":Oil --float<CR>")
+map("n", "<Tab>", ":bnext<CR>", { silent = true })
+map("n", "<leader>ff", ":FzfLua files<CR>")
+map("n", "<leader><space>", ":FzfLua files cwd=~/<CR>")
+map("n", "<leader>gp", ":FzfLua live_grep_native<CR>")
+map("n", "gdg", ":FzfLua diagnostics_document<CR>")
+map("n", "gdd", ":FzfLua git_diff<CR>")
+map("n", "<leader>km", ":FzfLua keymaps<CR>")
+map("n", "<leader>o", ":Oil<CR>")
+map("n", "<leader>e", ":NvimTreeToggle<CR>")
 
+-- lsp
 local servers = { "clangd", "lua_ls" }
 vim.lsp.config("lua_ls", {
         settings = {
@@ -69,13 +78,17 @@ vim.lsp.config("lua_ls", {
         }
 })
 
-local treesitters = {'cpp', 'lua'}
+-- treesitter
+local treesitters = { 'cpp', 'lua' }
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = treesitters,
-  callback = function() vim.treesitter.start() end,
+        pattern = treesitters,
+        callback = function() vim.treesitter.start() end,
 })
 
+-- plugins
 vim.pack.add({
+        "https://github.com/nvim-tree/nvim-tree.lua",
+        "https://github.com/nvim-tree/nvim-web-devicons",
         "https://github.com/nvim-treesitter/nvim-treesitter",
         "https://github.com/stevearc/oil.nvim",
         "https://github.com/ibhagwan/fzf-lua",
@@ -86,15 +99,38 @@ vim.pack.add({
         { src = "https://github.com/saghen/blink.cmp", version = vim.version.range('*') }
 })
 
+-- setup
+require("oil").setup()
 vim.schedule(function()
         for _, server in ipairs(servers) do
                 vim.lsp.enable(server)
         end
-        require("oil").setup()
+        require("nvim-tree").setup()
         require("nvim-autopairs").setup()
         require("neotab").setup({})
         require("fidget").setup({})
-        require("blink.cmp").setup({ completion = { menu = { auto_show = true }, ghost_text = { enabled = false } } })
         require("nvim-treesitter").install(treesitters)
+        require("fzf-lua").setup({ file_icon_padding = "  ", files = { file_icons = false }, winopts = { preview = { layout = "horizontal" } } })
+        vim.cmd("FzfLua register_ui_select")
+        require("blink.cmp").setup({
+                keymap = {
+                        preset = "default",
+                        ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
+                        ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+                        ["<CR>"] = { "accept", "fallback" },
+                        ["<PageUp>"] = { "scroll_documentation_up", "fallback" },
+                        ["<PageDown>"] = { "scroll_documentation_down", "fallback" },
+                },
+                completion = {
+                        list = {
+                                selection = {
+                                        preselect = false,
+                                        auto_insert = false
+                                }
+                        },
+                        menu = { auto_show = true },
+                        ghost_text = { enabled = false }
+                }
+        })
 end
 )
