@@ -1,14 +1,13 @@
-
 vim.loader.enable(true)
-vim.cmd("colorscheme  rose-pine")
+vim.cmd("colorscheme  rosepine")
 vim.g.mapleader = " "
 vim.opt.clipboard = "unnamedplus"
 vim.o.syntax = "off"
 vim.g.loaded_netrwPlugin = 1
 
---indent--
+-- indent
 vim.opt.expandtab = true
-vim.o.winborder = "single"
+vim.o.winborder = "rounded"
 vim.o.wrap = true
 vim.opt.tabstop = 8
 vim.opt.softtabstop = 8
@@ -18,21 +17,21 @@ vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.termguicolors = true
 
---file--
+-- file
 vim.opt.undofile = true
 
---buffer--
+-- buffer
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
---line number--
+-- line number
 vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.cursorline = false
 vim.opt.numberwidth = 4
 vim.opt.signcolumn = "yes"
 
---cmd line--
+-- cmd line
 vim.opt.cmdheight = 1
 vim.opt.smartcase = true
 vim.opt.ignorecase = true
@@ -50,10 +49,6 @@ map("n", "<C-h>", "<C-w>h")
 map("n", "<C-j>", "<C-w>j")
 map("n", "<C-k>", "<C-w>k")
 map("n", "<C-l>", "<C-w>l")
--- map("t", "<C-h>", "<cmd>wincmd h<CR>")
--- map("t", "<C-j>", "<cmd>wincmd j<CR>")
--- map("t", "<C-k>", "<cmd>wincmd k<CR>")
--- map("t", "<C-l>", "<cmd>wincmd l<CR>")
 map("n", "<leader>i", "<CMD>Inspect<CR>")
 map("n", "<A-v>", ":split<CR>", { noremap = true, silent = true })
 map("n", "<A-b>", ":vsplit<CR>", { noremap = true, silent = true })
@@ -99,8 +94,10 @@ vim.pack.add({
         { src = "https://github.com/saghen/blink.cmp", version = vim.version.range('*') }
 })
 
--- setup
+-- load
 require("oil").setup()
+
+-- lazy load
 vim.schedule(function()
         for _, server in ipairs(servers) do
                 vim.lsp.enable(server)
