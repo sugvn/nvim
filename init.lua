@@ -1,5 +1,6 @@
 vim.loader.enable(true)
 vim.cmd("colorscheme  rosepine")
+require("vim._core.ui2").enable({})
 vim.g.mapleader = " "
 vim.opt.clipboard = "unnamedplus"
 vim.o.syntax = "off"
