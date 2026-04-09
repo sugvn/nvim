@@ -113,16 +113,17 @@ vim.schedule(function()
         require("blink.cmp").setup({
                 keymap = {
                         preset = "default",
-                        ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
-                        ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+                        ["<C-k>"] = { "select_prev", "snippet_backward", "fallback" },
+                        ["<C-j>"] = { "select_next", "snippet_forward", "fallback" },
                         ["<CR>"] = { "accept", "fallback" },
+                        ["<C-y>"] = { "accept", "fallback" },
                         ["<PageUp>"] = { "scroll_documentation_up", "fallback" },
                         ["<PageDown>"] = { "scroll_documentation_down", "fallback" },
                 },
                 completion = {
                         list = {
                                 selection = {
-                                        preselect = false,
+                                        preselect = true,
                                         auto_insert = false
                                 }
                         },
