@@ -1,6 +1,5 @@
 vim.loader.enable(true)
 vim.cmd("colorscheme  rosepine")
-require("vim._core.ui2").enable({})
 vim.g.mapleader = " "
 vim.opt.clipboard = "unnamedplus"
 vim.o.syntax = "off"
@@ -88,11 +87,7 @@ vim.pack.add({
         "https://github.com/nvim-treesitter/nvim-treesitter",
         "https://github.com/stevearc/oil.nvim",
         "https://github.com/ibhagwan/fzf-lua",
-        "https://github.com/windwp/nvim-autopairs",
-        "https://github.com/j-hui/fidget.nvim",
-        "https://github.com/kawre/neotab.nvim",
         "https://github.com/neovim/nvim-lspconfig",
-        { src = "https://github.com/saghen/blink.cmp", version = vim.version.range('*') }
 })
 
 -- load
@@ -104,32 +99,8 @@ vim.schedule(function()
                 vim.lsp.enable(server)
         end
         require("nvim-tree").setup()
-        require("nvim-autopairs").setup()
-        require("neotab").setup({})
-        require("fidget").setup({})
         require("nvim-treesitter").install(treesitters)
         require("fzf-lua").setup({ file_icon_padding = "  ", files = { file_icons = false }, winopts = { preview = { layout = "horizontal" } } })
         vim.cmd("FzfLua register_ui_select")
-        require("blink.cmp").setup({
-                keymap = {
-                        preset = "default",
-                        ["<C-k>"] = { "select_prev", "snippet_backward", "fallback" },
-                        ["<C-j>"] = { "select_next", "snippet_forward", "fallback" },
-                        ["<CR>"] = { "accept", "fallback" },
-                        ["<C-y>"] = { "accept", "fallback" },
-                        ["<PageUp>"] = { "scroll_documentation_up", "fallback" },
-                        ["<PageDown>"] = { "scroll_documentation_down", "fallback" },
-                },
-                completion = {
-                        list = {
-                                selection = {
-                                        preselect = true,
-                                        auto_insert = false
-                                }
-                        },
-                        menu = { auto_show = true },
-                        ghost_text = { enabled = false }
-                }
-        })
 end
 )
