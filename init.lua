@@ -8,7 +8,7 @@ vim.g.loaded_netrwPlugin = 1
 -- indent
 vim.opt.expandtab = true
 vim.o.winborder = "rounded"
-vim.o.wrap = true
+vim.o.wrap = false
 vim.opt.tabstop = 8
 vim.opt.softtabstop = 8
 vim.opt.shiftwidth = 8
@@ -61,6 +61,7 @@ map("n", "gdd", ":FzfLua git_diff<CR>")
 map("n", "<leader>km", ":FzfLua keymaps<CR>")
 map("n", "<leader>o", ":Oil<CR>")
 map("n", "<leader>e", ":NvimTreeToggle<CR>")
+map('i', '<c-space>', '<c-x><c-o>')
 
 -- lsp
 local servers = { "clangd", "lua_ls" }
