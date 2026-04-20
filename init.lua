@@ -64,7 +64,7 @@ map("n", "<leader>e", ":NvimTreeToggle<CR>")
 map('i', '<c-space>', '<c-x><c-o>')
 
 -- lsp
-local servers = { "clangd", "lua_ls" }
+local servers = { "clangd", "lua_ls", "rust_analyzer" }
 vim.lsp.config("lua_ls", {
         settings = {
                 Lua = {
