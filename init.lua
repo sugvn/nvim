@@ -16,6 +16,7 @@ vim.opt.smarttab = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.termguicolors = true
+vim.opt.textwidth = 100
 
 -- file
 vim.opt.undofile = true
@@ -53,15 +54,17 @@ map("n", "<leader>i", "<CMD>Inspect<CR>")
 map("n", "<A-v>", ":split<CR>", { noremap = true, silent = true })
 map("n", "<A-b>", ":vsplit<CR>", { noremap = true, silent = true })
 map("n", "<Tab>", ":bnext<CR>", { silent = true })
-map("n", "<leader>ff", ":FzfLua files<CR>")
-map("n", "<leader><space>", ":FzfLua files cwd=~/<CR>")
-map("n", "<leader>gp", ":FzfLua live_grep_native<CR>")
-map("n", "gdg", ":FzfLua diagnostics_document<CR>")
-map("n", "gdd", ":FzfLua git_diff<CR>")
-map("n", "<leader>km", ":FzfLua keymaps<CR>")
 map("n", "<leader>o", ":Oil<CR>")
 map("n", "<leader>e", ":NvimTreeToggle<CR>")
 map('i', '<c-space>', '<c-x><c-o>')
+map("n", "<leader><space>",function() Snacks.picker.smart({cwd = "~/",layout = "telescope"}) end)
+map("n", "<leader>ff",function() Snacks.picker.smart({layout = "telescope"}) end)
+map("n", "<leader>gp",function() Snacks.picker.grep() end)
+map("n", "gdg",function() Snacks.picker.diagnostics_buffer({layout = "dropdown"}) end)
+map("n", "<leader>gp",function() Snacks.picker.grep() end)
+map("n", "grr",function() Snacks.picker.lsp_references() end)
+map("n", "grt",function() Snacks.picker.lsp_definitions() end)
+map("n", "gri",function() Snacks.picker.lsp_implementations() end)
 
 -- lsp
 local servers = { "clangd", "lua_ls", "rust_analyzer" }
@@ -83,11 +86,11 @@ vim.api.nvim_create_autocmd('FileType', {
 
 -- plugins
 vim.pack.add({
+        "https://github.com/folke/snacks.nvim",
         "https://github.com/nvim-tree/nvim-tree.lua",
         "https://github.com/nvim-tree/nvim-web-devicons",
         "https://github.com/nvim-treesitter/nvim-treesitter",
         "https://github.com/stevearc/oil.nvim",
-        "https://github.com/ibhagwan/fzf-lua",
         "https://github.com/neovim/nvim-lspconfig",
 })
 
@@ -101,7 +104,11 @@ vim.schedule(function()
         end
         require("nvim-tree").setup()
         require("nvim-treesitter").install(treesitters)
-        require("fzf-lua").setup({ file_icon_padding = "  ", files = { file_icons = false }, winopts = { preview = { layout = "horizontal" } } })
-        vim.cmd("FzfLua register_ui_select")
+        require("snacks").setup({
+                picker = {enabled = true},
+                terminal = {enabled = true},
+                quickfile = {enabled = true},
+                input = {enabled = true}
+        })
 end
 )

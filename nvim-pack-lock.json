@@ -1,9 +1,5 @@
 {
   "plugins": {
-    "fzf-lua": {
-      "rev": "bde73a6886b607246095aa59f396de5e0d036890",
-      "src": "https://github.com/ibhagwan/fzf-lua"
-    },
     "nvim-lspconfig": {
       "rev": "841c6d4139aedb8a3f2baf30cef5327371385b93",
       "src": "https://github.com/neovim/nvim-lspconfig"
@@ -23,6 +19,10 @@
     "oil.nvim": {
       "rev": "0fcc83805ad11cf714a949c98c605ed717e0b83e",
       "src": "https://github.com/stevearc/oil.nvim"
+    },
+    "snacks.nvim": {
+      "rev": "ad9ede6a9cddf16cedbd31b8932d6dcdee9b716e",
+      "src": "https://github.com/folke/snacks.nvim"
     }
   }
 }
