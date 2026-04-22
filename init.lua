@@ -65,6 +65,7 @@ map("n", "<leader>gp",function() Snacks.picker.grep() end)
 map("n", "grr",function() Snacks.picker.lsp_references() end)
 map("n", "grt",function() Snacks.picker.lsp_definitions() end)
 map("n", "gri",function() Snacks.picker.lsp_implementations() end)
+map("n", "<A-Tab>",function() Snacks.picker.buffers() end)
 
 -- lsp
 local servers = { "clangd", "lua_ls", "rust_analyzer" }
