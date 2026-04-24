@@ -66,6 +66,7 @@ map("n", "grr",function() Snacks.picker.lsp_references() end)
 map("n", "grt",function() Snacks.picker.lsp_definitions() end)
 map("n", "gri",function() Snacks.picker.lsp_implementations() end)
 map("n", "<A-Tab>",function() Snacks.picker.buffers() end)
+map("n", "<leader>cd",function() Snacks.picker.zoxide({layout = "telescope"}) end)
 
 -- lsp
 local servers = { "clangd", "lua_ls", "rust_analyzer" }
@@ -76,6 +77,15 @@ vim.lsp.config("lua_ls", {
                         workspace = { library = vim.api.nvim_get_runtime_file("", true) }
                 }
         }
+})
+vim.lsp.inlay_hint.enable(false)
+
+-- diagnostics
+vim.diagnostic.config({
+  virtual_text = false,
+  signs = true,
+  underline = false,
+  update_in_insert = false,
 })
 
 -- treesitter
