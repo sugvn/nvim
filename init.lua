@@ -9,9 +9,9 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.expandtab = true
 vim.o.winborder = "rounded"
 vim.o.wrap = false
-vim.opt.tabstop = 8
-vim.opt.softtabstop = 8
-vim.opt.shiftwidth = 8
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
 vim.opt.smarttab = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
@@ -59,7 +59,6 @@ map("n", "<leader>e", ":NvimTreeToggle<CR>")
 map('i', '<c-space>', '<c-x><c-o>')
 map("n", "<leader><space>",function() Snacks.picker.smart({cwd = "~/",layout = "telescope"}) end)
 map("n", "<leader>ff",function() Snacks.picker.files({layout = "telescope"}) end)
-map("n", "<leader>gp",function() Snacks.picker.grep() end)
 map("n", "gdg",function() Snacks.picker.diagnostics_buffer({layout = "dropdown"}) end)
 map("n", "<leader>gp",function() Snacks.picker.grep() end)
 map("n", "grr",function() Snacks.picker.lsp_references() end)
