@@ -26,7 +26,7 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 
 -- line number
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 vim.opt.number = true
 vim.opt.cursorline = true
 vim.opt.numberwidth = 4
